@@ -13,7 +13,7 @@
 <script lang="ts" setup>
 const props = withDefaults(
   defineProps<{
-    type?: 'text' | 'email' | 'password'
+    type?: 'text' | 'email' | 'password' | 'number'
     size?: 's' | 'm' | 'l'
     placeholder?: string
     autofocus?: boolean
