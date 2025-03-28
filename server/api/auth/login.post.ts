@@ -10,10 +10,11 @@ export default defineEventHandler(async (event) => {
 
   const i = users.findIndex((user) => {
     const {
-      credentials: { username, passphrase },
+      password: _password,
+      credentials: { username },
     } = user
 
-    return username === login && passphrase === password
+    return username === login && _password === password
   })
 
   if (i === -1) {

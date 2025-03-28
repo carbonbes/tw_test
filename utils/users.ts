@@ -2,6 +2,7 @@ export const users = [
   {
     name: 'David',
     surname: 'Jones',
+    password: '8u3&s-1uda',
     credentials: {
       username: 'david.jones@creds.com',
       passphrase: '52ccca432ab28afd90969084c061b23c',
@@ -14,6 +15,7 @@ export const users = [
   {
     name: 'Samantha',
     surname: 'Robertson',
+    password: '0k91sa639',
     credentials: {
       username: 'sam.robertson@creds.com',
       passphrase: 'cefdd8f05b00320c8ff42f8734f96633',
@@ -26,6 +28,7 @@ export const users = [
   {
     name: 'Nicholas',
     surname: 'Crew',
+    password: '1atr48asf03',
     credentials: {
       username: 'nic.crew@creds.com',
       passphrase: '23c2b519b1e2cd4bbaf5f68f58024785',
