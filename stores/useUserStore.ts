@@ -8,11 +8,26 @@ export const useUserStore = defineStore('user', () => {
   const { $api } = useNuxtApp()
 
   async function getMe() {
-    const data = await $api.me()
+    try {
+      const data = await $api.me()
 
+      user.value = data
+      isAuthenticated.value = true
+    } catch (error) {}
+  }
+
+  function setUser(data: User) {
     user.value = data
     isAuthenticated.value = true
   }
 
-  return { user, isAuthenticated, getMe }
+  async function logout() {
+    try {
+      await $api.logout()
+      user.value = undefined
+      isAuthenticated.value = false
+    } catch (error) {}
+  }
+
+  return { user, isAuthenticated, getMe, setUser, logout }
 })

@@ -1,3 +1,3 @@
 export default defineEventHandler(async (event) => {
-  return event.context.user
+  deleteCookie(event, 'tw_test_credentials')
 })

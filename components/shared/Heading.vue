@@ -20,5 +20,6 @@ const classes = computed(() => ({
   'font-bold': true,
   'text-[32px] leading-[30px]': props.level === 1,
   'text-[20px] leading-[28px]': props.level === 2,
+  'text-[17px] leading-[24px]': props.level === 3,
 }))
 </script>

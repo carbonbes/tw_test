@@ -1,6 +1,6 @@
 import type { User } from '~/types'
 
-export default defineNuxtPlugin((nuxtApp) => {
+export default defineNuxtPlugin(() => {
   const fetchInstance = $fetch.create({
     baseURL: '/api',
     headers: useRequestHeaders(['cookie']),
@@ -8,14 +8,18 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   const api = {
     async me() {
-      return await fetchInstance<User>('/v1/auth/me')
+      return await fetchInstance<User>('/api/auth/me')
     },
 
     async login(body: { login: string; password: string }) {
-      return await fetchInstance<User | undefined>('/v1/auth/login', {
+      return await fetchInstance<User | undefined>('/api/auth/login', {
         method: 'POST',
         body,
       })
+    },
+
+    async logout() {
+      return await fetchInstance('/api/auth/logout')
     },
   }
 

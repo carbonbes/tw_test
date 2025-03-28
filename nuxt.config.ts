@@ -4,9 +4,16 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
 
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/fonts', '@nuxt/icon', '@pinia/nuxt'],
+  modules: [
+    '@nuxtjs/tailwindcss',
+    '@nuxt/fonts',
+    '@nuxt/icon',
+    '@pinia/nuxt',
+    '@vueuse/nuxt',
+    'reka-ui/nuxt',
+  ],
 
-  css: ['~/assets/styles/index.sass'],
+  css: ['~/assets/css/index.sass'],
 
   fonts: {
     families: [

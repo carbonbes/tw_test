@@ -20,5 +20,14 @@ export default defineEventHandler(async (event) => {
     throw createError('Введены неверные данные авторизации. Попробуйте ещё раз')
   }
 
+  setCookie(
+    event,
+    'tw_test_credentials',
+    JSON.stringify(users[i].credentials),
+    {
+      maxAge: 60 * 60 * 24 * 365,
+    }
+  )
+
   return users[i]
 })

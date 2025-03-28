@@ -10,21 +10,21 @@ declare module 'h3' {
 export default defineEventHandler(async (event) => {
   event.context.user = null
 
-  const cookie = getCookie(event, 'tw_test_cookie')
+  const cookie = getCookie(event, 'tw_test_credentials')
 
   if (!cookie) return
 
-  const parsed = JSON.parse(cookie) as User | undefined
+  const parsed = JSON.parse(cookie) as Pick<
+    User['credentials'],
+    'username' | 'passphrase'
+  >
 
   const i = users.findIndex((user) => {
     const {
       credentials: { username, passphrase },
     } = user
 
-    return (
-      username === parsed?.credentials.username &&
-      passphrase === parsed?.credentials.passphrase
-    )
+    return username === parsed.username && passphrase === parsed.passphrase
   })
 
   if (i === -1) return

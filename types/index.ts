@@ -9,3 +9,11 @@ export type User = {
   created: string
   _comment: string
 }
+
+export type Toast = {
+  id?: string
+  title?: string
+  text: string
+  duration?: number
+  type?: 'success' | 'error'
+}
