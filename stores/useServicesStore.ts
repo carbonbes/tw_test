@@ -189,26 +189,20 @@ export const useServicesStore = defineStore('services-store', () => {
 
   const filters = ref<Partial<Record<keyof Service, string>>>({})
 
-  const filteredServices = ref<Service[]>([])
+  const filteredServices = computed(() =>
+    services.value.filter((service) =>
+      Object.entries(filters.value).every(([key, value]) => {
+        if (!value) return true
 
-  watch(
-    filters,
-    () => {
-      filteredServices.value = services.value.filter((service) =>
-        Object.entries(filters.value).every(([key, value]) => {
-          if (!value) return true
+        if ((key === 'id' || key === 'price') && typeof value === 'number') {
+          return service[key] === value
+        }
 
-          if ((key === 'id' || key === 'price') && typeof value === 'number') {
-            return service[key] === value
-          }
-
-          if (typeof value === 'string') {
-            return service[key as keyof Service]?.toString().includes(value)
-          }
-        })
-      )
-    },
-    { deep: true }
+        if (typeof value === 'string') {
+          return service[key as keyof Service]?.toString().includes(value)
+        }
+      })
+    )
   )
 
   return { services, filters, filteredServices }
