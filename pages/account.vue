@@ -11,47 +11,33 @@
     </Flex>
 
     <Flex col class="gap-6">
-      <UIButton
-        class="flex items-center justify-center gap-2"
-        @click="filtersDialogIsOpen = true"
-      >
-        <Icon name="tabler:adjustments-horizontal" />
-        Фильтр
-      </UIButton>
+      <div class="relative md:w-[fit-content]">
+        <UIButton
+          class="w-full flex items-center justify-center gap-2"
+          @click="filtersDialogIsOpen = true"
+        >
+          <Icon name="tabler:adjustments-horizontal" />
+          Фильтр
+        </UIButton>
 
-      <Table :headings="headings" :rows="filteredServices" />
+        <div
+          v-if="!isEmptyObject(filters)"
+          class="absolute top-0 right-0 -translate-y-1/3 translate-x-1/3 size-4 bg-red-500 rounded-full"
+        />
+      </div>
+
+      <AccountTable :headings="headings" :rows="services" />
     </Flex>
   </div>
 
-  <Dialog v-model:open="filtersDialogIsOpen" class="w-full max-w-[500px]">
-    <Flex col class="gap-6">
-      <Heading :level="2">Фильтры</Heading>
-
-      <Flex col class="gap-4">
-        <UIInput placeholder="ID" type="number" v-model="filters.id" />
-        <UIInput placeholder="Статус" v-model="filters.status" />
-        <UIInput placeholder="Имя" v-model="filters.name" />
-        <UIInput placeholder="Дата создания" v-model="filters.date_created" />
-        <UIInput
-          placeholder="Цена"
-          type="number"
-          v-model="filters.price"
-          class="flex-[1]"
-        />
-      </Flex>
-
-      <UIButton @click="filtersDialogIsOpen = false">Применить</UIButton>
-    </Flex>
-  </Dialog>
+  <AccountFiltersDialog v-model:open="filtersDialogIsOpen" />
 </template>
 
 <script lang="ts" setup>
 import Flex from '~/components/shared/Flex.vue'
 import UIButton from '~/components/shared/UIButton.vue'
-import Table from '~/components/Table.vue'
-import Dialog from '~/components/shared/Dialog.vue'
-import Heading from '~/components/shared/Heading.vue'
-import UIInput from '~/components/shared/UIInput.vue'
+import AccountTable from '~/components/account/AccountTable.vue'
+import AccountFiltersDialog from '~/components/account/AccountFiltersDialog.vue'
 
 definePageMeta({
   middleware: ['auth'],
@@ -60,7 +46,7 @@ definePageMeta({
 const filtersDialogIsOpen = ref(false)
 
 const { logout } = useUserStore()
-const { filters, filteredServices } = storeToRefs(useServicesStore())
+const { services, filters } = storeToRefs(useServicesStore())
 
 async function handleLogout() {
   try {

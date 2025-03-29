@@ -8,7 +8,7 @@
       <FadeInScaleTransition>
         <DialogContent
           aria-describedby=""
-          class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-4 flex flex-col bg-white rounded-xl"
+          class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-6 flex flex-col bg-white rounded-xl"
           :class
           v-bind="{ ...emitsAsProps, ...$attrs }"
         >
@@ -16,17 +16,14 @@
             <DialogTitle />
           </VisuallyHidden>
 
-          <Flex itemsCenter class="pb-4" :class="[headerClass]">
+          <Flex itemsCenter :class="[headerClass]">
             <slot name="left-header" />
 
             <Flex itemsCenter class="ml-auto gap-4">
               <slot name="right-header" />
 
-              <button @click="onCloseDown">
-                <Icon
-                  name="tabler:x"
-                  class="hover:opacity-50 transition-opacity"
-                />
+              <button class="hover:opacity-50 transition-opacity" @click="onCloseDown">
+                <Icon name="tabler:x" />
               </button>
             </Flex>
           </Flex>
