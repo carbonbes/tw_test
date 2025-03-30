@@ -23,9 +23,12 @@
             Статус
           </FiltersDialogListItemHeading>
 
-          <UIInput
+          <RadioGroup
+            :items="[
+              { name: 'Активный', value: 'active' },
+              { name: 'Неактивный', value: 'inactive' },
+            ]"
             v-model="filters.status"
-            :disabled="isRequesting"
           />
         </FiltersDialogListItem>
 
@@ -118,6 +121,7 @@ import FiltersDialogHeading from '~/components/account/filters-dialog/FiltersDia
 import FiltersDialogContent from '~/components/account/filters-dialog/FiltersDialogContent.vue'
 import FiltersDialogFooter from '~/components/account/filters-dialog/FiltersDialogFooter.vue'
 import FiltersDialogListItemSub from '~/components/account/filters-dialog/FiltersDialogListItemSub.vue'
+import RadioGroup from '~/components/shared/RadioGroup.vue'
 
 const open = defineModel('open', { type: Boolean, default: false })
 
