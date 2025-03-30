@@ -19,6 +19,7 @@ export default defineNuxtConfig({
     '/': {
       redirect: '/account',
     },
+    
     '/login': {
       ssr: false,
     },
