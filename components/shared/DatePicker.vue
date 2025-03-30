@@ -1,5 +1,9 @@
 <template>
-  <DatePickerRoot locale="ru" v-model="model">
+  <DatePickerRoot
+    locale="ru"
+    :model-value="calendarDate"
+    @update:model-value="handleUpdate"
+  >
     <DatePickerTrigger asChild>
       <slot />
     </DatePickerTrigger>
@@ -90,25 +94,33 @@
 <script lang="ts" setup>
 import Flex from '~/components/shared/Flex.vue'
 import UIButton from '~/components/shared/UIButton.vue'
-import { CalendarDate } from '@internationalized/date'
+import { CalendarDate, type DateValue } from '@internationalized/date'
 
-const date = ref<string>()
+const props = defineProps<{
+  date: string | undefined
+}>()
 
-const model = computed({
-  get() {
-    if (!date.value) return
+const emits = defineEmits<{
+  update: [string | undefined]
+}>()
 
-    const [day, month, year] = date.value.split('.')
+function handleUpdate(date: DateValue | undefined) {
+  if (!date) {
+    emits('update', undefined)
 
-    return new CalendarDate(+year, +month, +day)
-  },
-
-  set(newValue) {
-    if (!newValue) return
-
-    const { day, month, year } = newValue
-
-    date.value = `${day}.${month}.${year}`
+    return
   }
+
+  const { day, month, year } = date
+
+  emits('update', `${day}.${formatMonth(month)}.${year}`)
+}
+
+const calendarDate = computed(() => {
+  if (!props.date) return
+
+  const [day, month, year] = props.date.split('.')
+
+  return new CalendarDate(+year, +month, +day)
 })
 </script>

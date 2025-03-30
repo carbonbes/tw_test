@@ -38,9 +38,16 @@
           </FiltersDialogListItemHeading>
 
           <FiltersDialogListItemSub>
-            <DateField v-model="filters.date_created" class="w-full" />
+            <DateField
+              :date="filters.date_created"
+              @update="(date) => filters.date_created = date"
+              class="w-full"
+            />
 
-            <DatePicker v-model="filters.date_created">
+            <DatePicker
+              :date="filters.date_created"
+              @update="(date) => filters.date_created = date"
+            >
               <UIButton
                 variant="secondary"
                 class="flex items-center justify-center"
