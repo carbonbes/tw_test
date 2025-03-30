@@ -26,7 +26,10 @@
         />
       </div>
 
-      <AccountTable :headings="headings" :rows="services" />
+      <AccountTable
+        :headings="['ID', 'Статус', 'Дата создания', 'Название', 'Цена']"
+        :rows="services"
+      />
     </Flex>
   </div>
 
@@ -37,7 +40,7 @@
 import Flex from '~/components/shared/Flex.vue'
 import UIButton from '~/components/shared/UIButton.vue'
 import AccountTable from '~/components/account/AccountTable.vue'
-import AccountFiltersDialog from '~/components/account/AccountFiltersDialog.vue'
+import AccountFiltersDialog from '~/components/account/filters-dialog/FiltersDialog.vue'
 
 definePageMeta({
   middleware: ['auth'],
@@ -54,8 +57,6 @@ async function handleLogout() {
     await navigateTo('/login')
   } catch (error) {}
 }
-
-const headings = ['ID', 'Статус', 'Дата создания', 'Название', 'Цена']
 </script>
 
 <style lang="sass">
