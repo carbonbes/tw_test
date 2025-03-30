@@ -1,30 +1,28 @@
 <template>
-  <ClientOnly>
-    <Flex col center class="p-4 h-full">
-      <Flex col class="p-8 w-full max-w-[450px] gap-4 bg-white rounded-xl">
-        <Heading :level="2" class="text-center">Идентификация</Heading>
+  <Flex col center class="p-4 h-full">
+    <Flex col class="p-8 w-full max-w-[450px] gap-4 bg-white rounded-xl">
+      <Heading :level="2" class="text-center">Идентификация</Heading>
 
-        <UIInput
-          placeholder="Логин"
-          type="email"
-          v-model.trim="formData.login"
-          :disabled="isRequesting"
-          autofocus
-        />
+      <UIInput
+        placeholder="Логин"
+        type="email"
+        v-model.trim="formData.login"
+        :disabled="isRequesting"
+        autofocus
+      />
 
-        <UIInput
-          placeholder="Пароль"
-          type="password"
-          :disabled="isRequesting"
-          v-model.trim="formData.password"
-        />
+      <UIInput
+        placeholder="Пароль"
+        type="password"
+        :disabled="isRequesting"
+        v-model.trim="formData.password"
+      />
 
-        <UIButton :disabled="formDataIsEmpty || isRequesting" @click="login">
-          Войти
-        </UIButton>
-      </Flex>
+      <UIButton :disabled="formDataIsEmpty || isRequesting" @click="login">
+        Войти
+      </UIButton>
     </Flex>
-  </ClientOnly>
+  </Flex>
 </template>
 
 <script lang="ts" setup>

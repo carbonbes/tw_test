@@ -15,6 +15,15 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/index.sass'],
 
+  routeRules: {
+    '/': {
+      redirect: '/account',
+    },
+    '/login': {
+      ssr: false,
+    },
+  },
+
   fonts: {
     families: [
       {
