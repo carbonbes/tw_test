@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { DateValue } from 'reka-ui'
+import { CalendarDate } from '@internationalized/date'
 
 const props = withDefaults(
   defineProps<{
@@ -32,11 +32,28 @@ const props = withDefaults(
   }
 )
 
-const model = defineModel<DateValue>()
+const date = ref<string>()
+
+const model = computed({
+  get() {
+    if (!date.value) return
+
+    const [day, month, year] = date.value.split('.')
+
+    return new CalendarDate(+year, +month, +day)
+  },
+
+  set(newValue) {
+    if (!newValue) return
+
+    const { day, month, year } = newValue
+
+    date.value = `${day}.${month}.${year}`
+  }
+})
 
 const classes = computed(() => ({
-  'flex items-center rounded-lg outline-none border-2 border-gray-200/50 hover:border-blue-500/50 focus:border-blue-500 disabled:opacity-25 disabled:pointer-events-none transition':
-    true,
+  'flex items-center rounded-lg outline-none border-2 border-gray-200/50 hover:border-blue-500/50 focus:border-blue-500 disabled:opacity-25 disabled:pointer-events-none transition': true,
   'bg-gray-100/75': !model.value,
   'py-1 px-1 text-sm': props.size === 's',
   'py-1.5 px-2': props.size === 'm',

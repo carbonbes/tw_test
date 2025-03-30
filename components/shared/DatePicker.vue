@@ -1,5 +1,5 @@
 <template>
-  <DatePickerRoot locale="ru">
+  <DatePickerRoot locale="ru" v-model="model">
     <DatePickerTrigger asChild>
       <slot />
     </DatePickerTrigger>
@@ -90,4 +90,25 @@
 <script lang="ts" setup>
 import Flex from '~/components/shared/Flex.vue'
 import UIButton from '~/components/shared/UIButton.vue'
+import { CalendarDate } from '@internationalized/date'
+
+const date = ref<string>()
+
+const model = computed({
+  get() {
+    if (!date.value) return
+
+    const [day, month, year] = date.value.split('.')
+
+    return new CalendarDate(+year, +month, +day)
+  },
+
+  set(newValue) {
+    if (!newValue) return
+
+    const { day, month, year } = newValue
+
+    date.value = `${day}.${month}.${year}`
+  }
+})
 </script>
