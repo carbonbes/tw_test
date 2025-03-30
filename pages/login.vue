@@ -33,7 +33,7 @@ import Heading from '~/components/shared/Heading.vue'
 import UIInput from '~/components/shared/UIInput.vue'
 import UIButton from '~/components/shared/UIButton.vue'
 import { promiseTimeout } from '@vueuse/core'
-import type { User } from '~/types'
+import type { User } from '~/utils/users'
 
 const formData = reactive({
   login: '',

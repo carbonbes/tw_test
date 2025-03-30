@@ -1,4 +1,4 @@
-import type { User } from '~/types'
+import type { User } from '~/utils/users'
 
 export default defineNuxtPlugin(() => {
   const fetchInstance = $fetch.create({

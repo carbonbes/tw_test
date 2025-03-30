@@ -1,4 +1,4 @@
-import { User } from '~/types'
+import type { User } from '~/utils/users'
 import { users } from '~/utils/users'
 
 declare module 'h3' {

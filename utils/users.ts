@@ -1,4 +1,17 @@
-export const users = [
+export type User = {
+  name: string
+  surname: string
+  password: string
+  credentials: {
+    username: string
+    passphrase: string
+  }
+  active: boolean
+  created: string
+  _comment: string
+}
+
+export const users: User[] = [
   {
     name: 'David',
     surname: 'Jones',

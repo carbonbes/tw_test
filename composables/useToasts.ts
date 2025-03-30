@@ -1,5 +1,12 @@
-import type { Toast } from '~/types'
 import { v4 as uuidv4 } from 'uuid'
+
+export type Toast = {
+  id?: string
+  title?: string
+  text: string
+  duration?: number
+  type?: 'success' | 'error'
+}
 
 export function useToasts() {
   const toasts = useState<Toast[]>(() => [])

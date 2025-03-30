@@ -43,7 +43,7 @@
 
 <script lang="ts" setup>
 import Flex from '~/components/shared/Flex.vue'
-import type { Toast } from '~/types'
+import type { Toast } from '~/composables/useToasts'
 import Heading from '~/components/shared/Heading.vue'
 import { promiseTimeout } from '@vueuse/core'
 
@@ -54,7 +54,7 @@ const isSuccess = computed(() => props.toast.type === 'success')
 const { remove } = useToasts()
 
 onMounted(async () => {
-  await promiseTimeout(props.toast.duration)
+  await promiseTimeout(props.toast.duration as number)
   remove(props.toast.id)
 })
 </script>
