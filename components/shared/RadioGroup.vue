@@ -6,15 +6,15 @@
       tag="label"
       :for="item.value"
       itemsCenter
-      class="gap-2"
+      class="gap-2 cursor-pointer group"
     >
       <RadioGroupItem
         :value="item.value"
         :id="item.value"
-        class="size-5 bg-white border-2 rounded-full data-[active=true]:border-blue-500 data-[active=true]:bg-white shadow-sm focus:shadow-[0_0_0_2px] focus:shadow-blue-500 outline-none cursor-default"
+        class="size-4 bg-white ring-2 ring-gray-300/50 rounded-full group-hover:ring-blue-500 data-[active=true]:ring-blue-500 data-[active=true]:bg-white shadow-sm outline-none transition-shadow"
       >
         <RadioGroupIndicator
-          class="relative w-full h-full flex items-center justify-center after:content-[''] after:block after:size-[10px] after:rounded-[50%] after:bg-blue-500"
+          class="relative w-full h-full flex items-center justify-center after:content-[''] after:block after:size-[8px] after:rounded-[50%] after:bg-blue-500"
         />
       </RadioGroupItem>
 
