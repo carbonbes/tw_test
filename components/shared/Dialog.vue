@@ -16,15 +16,13 @@
             <DialogTitle />
           </VisuallyHidden>
 
-          <Flex itemsCenter :class="[headerClass]">
-            <slot name="left-header" />
+          <Flex itemsCenter class="pb-6 h-14" :class="[headerClass]">
+            <Heading v-if="props.title" :level="2">
+              {{ props.title }}
+            </Heading>
 
-            <Flex itemsCenter class="ml-auto gap-4">
-              <slot name="right-header" />
-
-              <button class="hover:opacity-50 transition-opacity" @click="onCloseDown">
-                <Icon name="tabler:x" />
-              </button>
+            <Flex tag="button" class="ml-auto hover:opacity-50 transition-opacity" @click="onCloseDown">
+              <Icon name="tabler:x" />
             </Flex>
           </Flex>
 
@@ -46,6 +44,7 @@
 
 <script lang="ts" setup>
 import Flex from '~/components/shared/Flex.vue'
+import Heading from '~/components/shared/Heading.vue'
 import FadeInOpacityTransition from '~/components/shared/FadeInOpacityTransition.vue'
 import FadeInScaleTransition from '~/components/shared/FadeInScaleTransition.vue'
 import {
@@ -60,6 +59,7 @@ const props = defineProps<
     headerClass?: string | object
     footerClass?: string | object
     closeCallback?: () => void
+    title?: string
   }
 >()
 

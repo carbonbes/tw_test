@@ -1,10 +1,10 @@
 <template>
-  <Dialog v-model:open="open" class="w-full max-w-[500px] max-[500px]:rounded-none">
+  <Dialog
+    title="Фильтры"
+    v-model:open="open"
+    class="w-full sm:max-w-[500px] max-[500px]:rounded-none"
+  >
     <FiltersDialogContent>
-      <FiltersDialogHeading>
-        Фильтры
-      </FiltersDialogHeading>
-
       <FiltersDialogList>
         <FiltersDialogListItem>
           <FiltersDialogListItemHeading>
