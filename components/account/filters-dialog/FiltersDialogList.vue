@@ -1,5 +1,5 @@
 <template>
-  <Flex col class="gap-4">
+  <Flex col class="gap-6">
     <slot />
   </Flex>
 </template>
