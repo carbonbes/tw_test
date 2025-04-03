@@ -30,7 +30,7 @@ const props = withDefaults(
 const nuxtLink = defineNuxtLink({})
 
 const classes = computed(() => ({
-  'rounded-lg border-2 border-transparent shadow-md font-bold whitespace-nowrap disabled:opacity-25 disabled:pointer-events-none data-[disabled="true"]:opacity-25 data-[disabled="true"]:pointer-events-none transition select-none touch-manipulation':
+  'rounded-lg border-2 border-transparent shadow-md font-medium whitespace-nowrap disabled:opacity-25 disabled:pointer-events-none data-[disabled="true"]:opacity-25 data-[disabled="true"]:pointer-events-none transition select-none touch-manipulation':
     true,
   'bg-blue-500 ring-1 ring-blue-600 hover:bg-blue-600 active:bg-blue-700 text-white':
     props.variant === 'primary',
